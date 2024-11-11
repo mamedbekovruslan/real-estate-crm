@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Real estate CRM.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Still in development...
 
-Currently, two official plugins are available:
+**CRM system for real estate.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This system will help a real estate agency or individual agents manage clients,
+facilities, transactions and tasks.
 
-## Expanding the ESLint configuration
+**Key CRM functions for real estate:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Customer management
 
-- Configure the top-level `parserOptions` property like this:
+      1. Maintaining a customer database with information about each customer, their real estate preferences and interaction history.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+      2. Setting statuses for clients (for example, "Potential", "Active", "Closed transaction") and segmentation by interests or budget.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Object management
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+      1. Storing information about the property, including photos, descriptions, price, location and status (for example, "For sale", "Leased").
+
+
+      2. Implementation of sorting and filtering of objects (by price, type, size, location) for fast work with the necessary ads.
+
+- Tracking transactions and interactions
+
+      1. Create and track transaction records with the ability to add notes, statuses (for example, "In progress", "Contract signed") and reminders.
+
+
+      2. Maintaining a history of communications with clients, logs of object views or calls. Chat between the customer and the seller.
+
+- Sales and Agent Analytics panel
+
+      1. Displaying metrics and charts on the number of closed transactions, popular objects and the effectiveness of agents.
+
+
+      2. Monthly reports on successful and unsuccessful transactions to improve your sales strategy.
+
+- Calendar of tasks and events
+
+      1. Reminders for agents about meetings, site views and transaction completion dates.
+
+
+      2. The ability to add tasks related to specific deals or customers with notifications and reminders.
+
+- Access control by roles (Admin, Agent, Client)
+
+      1. Secure access control, where administrators can view and manage all data, agents only see their transactions, and customers can view their requests and real estate information shown to them.
+
+- Notifications and alerts
+
+      1. Notifications about transaction statuses, deadlines and meetings with clients. Automatic emails or messages to customers about new facilities that match their preferences.
