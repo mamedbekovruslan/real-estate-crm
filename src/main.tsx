@@ -1,11 +1,10 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import "./index.css";
-import "./assets/fonts/index.css";
+import { ThemeProviderWrapper } from "./context/ThemeContext";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <ThemeProviderWrapper>
     <App />
-  </StrictMode>
+  </ThemeProviderWrapper>
 );
