@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "../styles/theme";
 
@@ -19,14 +25,24 @@ export const useTheme = () => {
   return context;
 };
 
-export const ThemeProviderWrapper: React.FC = ({ children }) => {
-  const [mode, setMode] = useState<ThemeMode>("light");
+export const ThemeProviderWrapper: React.FC<{ children?: ReactNode }> = ({
+  children,
+}) => {
+  const initialMode = (localStorage.getItem("theme") as ThemeMode) || "light";
+  const [mode, setMode] = useState<ThemeMode>(initialMode);
 
   const toggleTheme = () => {
-    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    setMode((prevMode) => {
+      const newMode = prevMode === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newMode);
+      return newMode;
+    });
   };
 
-  const theme = mode === "light" ? lightTheme : darkTheme;
+  const theme = useMemo(
+    () => (mode === "light" ? lightTheme : darkTheme),
+    [mode]
+  );
 
   return (
     <ThemeContext.Provider value={{ mode, toggleTheme }}>
