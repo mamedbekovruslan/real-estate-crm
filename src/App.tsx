@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
-import { SwitchBtn } from "./components/SwitchBtn";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 const App: React.FC = () => {
   return (
@@ -18,10 +19,11 @@ const App: React.FC = () => {
           color: "text.primary",
         }}
       >
-        <SwitchBtn />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Box>
     </Router>
