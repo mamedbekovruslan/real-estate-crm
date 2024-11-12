@@ -1,21 +1,19 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
-import { ThemeProvider } from "@mui/material/styles";
-import { lightTheme, darkTheme } from "../styles/theme";
+// ThemeContext.ts
+import { createContext, useContext } from "react";
 
-type ThemeMode = "light" | "dark";
+export type ThemeMode = "light" | "dark";
 
-interface ThemeContextProps {
+export interface ThemeContextProps {
   mode: ThemeMode;
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextProps>({
+  mode: "light",
+  toggleTheme: () => {
+    throw new Error("toggleTheme is not implemented");
+  },
+});
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
@@ -23,30 +21,4 @@ export const useTheme = () => {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
-};
-
-export const ThemeProviderWrapper: React.FC<{ children?: ReactNode }> = ({
-  children,
-}) => {
-  const initialMode = (localStorage.getItem("theme") as ThemeMode) || "light";
-  const [mode, setMode] = useState<ThemeMode>(initialMode);
-
-  const toggleTheme = () => {
-    setMode((prevMode) => {
-      const newMode = prevMode === "light" ? "dark" : "light";
-      localStorage.setItem("theme", newMode);
-      return newMode;
-    });
-  };
-
-  const theme = useMemo(
-    () => (mode === "light" ? lightTheme : darkTheme),
-    [mode]
-  );
-
-  return (
-    <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ThemeContext.Provider>
-  );
 };
